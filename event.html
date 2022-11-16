@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      #member {
+        padding: 20px;
+      }
+      #member {
+        background-color: #b3eaff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="member"></div>
+    <script type="text/babel">
+      class Member extends React.Component {
+        constructor(props) {
+          super(props),
+            (this.state = {
+              name: "pham doanh",
+              age: 10000,
+            });
+        }
+
+        handleMember = () => {
+          this.setState({ name: "pham tien doang", age: 1234567987 });
+        };
+        render() {
+          return (
+            <>
+              <div className="member">
+                <h1>name : {this.state.name}</h1>
+                <p>age : {this.state.age}</p>
+              </div>
+              <button onClick={this.handleMember}> Ấn để thay đổi</button>
+            </>
+          );
+        }
+      }
+      ReactDOM.render(
+        <Member />,
+        document.getElementById('member')
+      );
+    </script>
+  </body>
+</html>

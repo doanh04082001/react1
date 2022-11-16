@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React State</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      #member {
+        padding: 20px;
+      }
+      #member {
+        background-color: #b3eaff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="member"></div>
+    <div id="member2"></div>
+    <script type="text/babel">
+      class Member extends React.Component {
+        constructor(props){
+            super(props)
+            this.state = {
+                isLoggedIn: false
+            }
+        }
+        UserGreeting = (props) => {
+          return <h2>Welcome back!</h2>;
+        };
+
+        GuestGreeting = (props) => {
+          return <h2>Please sign in.</h2>;
+        };
+        render() {
+          return;
+        }
+      }
+      ReactDOM.render(<Member />, document.getElementById("member"));
+    </script>
+  </body>
+</html>

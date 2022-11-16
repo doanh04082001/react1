@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Xử lí form</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      #member {
+        padding: 20px;
+      }
+      #member {
+        background-color: #b3eaff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="member"></div>
+    <div id="member2"></div>
+    <script type="text/babel">
+      //chuyển sang viết kiểu classes , không cần khai báo props để nhận giá trị
+      class Member extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            isGoing: true,
+            name: "Phạm tiến doanh",
+            course: "Js",
+            message: "helo sờ li li",
+          };
+        }
+        handleInputChange = (event) => {
+          const target = event.target;
+          const value =
+            target.type === "checkbox" ? target.checked : target.value;
+          const name = target.name;
+
+          this.setState({
+            [name]: value,
+          });
+        };
+
+        handleGetValueInput = (e) => {
+          const valueInput = e.target.value;
+          this.setState({ name: valueInput });
+        };
+
+        handleGetValueSelect = (e) => {
+          const valueSelect = e.target.value;
+          this.setState({ course: valueSelect });
+          // this.setState({name:valueInput })
+        };
+
+        handleGetValueText = (e) => {
+          const valueText = e.target.value;
+          this.setState({ message: valueText });
+        };
+
+        handleCheckSubmit = (e) => {
+          alert(
+            this.state.isGoing +
+            this.state.name +
+            this.state.course +
+            this.state.message
+          );
+          e.preventDefault();
+        };
+        render() {
+          return (
+            <form action="" onSubmit={this.handleCheckSubmit}>
+              <label htmlFor="check">Tham gia</label>
+              <input
+                name="isGoing"
+                type="checkbox"
+                checked={this.state.isGoing}
+                onChange={this.handleInputChange}
+              />
+              <br />
+
+              <label htmlFor="name">Ghi dõ họ tên</label>
+              <input
+                type="text"
+                id="name"
+                onChange={this.handleGetValueInput}
+              />
+              <br />
+
+              <label htmlFor="select">Chọn khóa học</label>
+              <select
+                name="khoaHoc"
+                onChange={this.handleGetValueSelect}
+                id="khoaHoc"
+              >
+                <option value="Js">Js</option>
+                <option value="Php">Php</option>
+                <option value="C#">C#</option>
+              </select>
+              <br />
+
+              <label htmlFor="vehicle1">Message</label>
+              <textarea id="textarea" rows="2" cols="40"></textarea>
+              <br />
+
+              <input type="submit" value="Submit" />
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(
+        <Member name="Nguyễn Văn A" age="25" />,
+        document.getElementById("member")
+      );
+    </script>
+  </body>
+</html>

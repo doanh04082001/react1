@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React State</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      #member {
+        padding: 20px;
+      }
+      #member {
+        background-color: #b3eaff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="member"></div>
+    <div id="member2"></div>
+    <script type="text/babel">
+      //chuyển sang viết kiểu classes , không cần khai báo props để nhận giá trị
+      class Member extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            name: "Phạm tiến doanh",
+            age: "23",
+          };
+        }
+        changeName = () => {
+          this.setState({
+            name: "Bùi Văn Tý",
+            age: 27
+          })
+        };
+        render() {
+          return (
+            <div className="member">
+              // gọi state thì cũng giống như props
+              <h1> Name : {this.state.name}</h1>
+              <p> Age : {this.state.age}</p>
+              <button className="btn" onClick={this.changeName}> Ấn để thay đổi </button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Member />, document.getElementById("member"));
+    </script>
+  </body>
+</html>
